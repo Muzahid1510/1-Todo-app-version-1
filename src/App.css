@@ -1,0 +1,441 @@
+:root{
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --primary: #2563eb;
+  --accent: #06b6d4;
+  --success: #16a34a;
+  --danger: #ef4444;
+  --shadow: 0 6px 18px rgba(16,24,40,0.08);
+  --radius: 10px;
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: var(--bg);
+  color:#0f172a;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.app-container{
+  max-width:900px;
+  margin:36px auto;
+  padding:20px;
+}
+
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:18px;
+}
+
+.app-title{
+  font-size:32px;
+  font-weight:700;
+  margin:0;
+}
+
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:18px;
+}
+
+.add-row{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.add-row input[type="text"], .add-row input[type="search"]{
+  flex:1;
+  padding:10px 12px;
+  border:1px solid #e6e9ef;
+  border-radius:8px;
+  font-size:15px;
+  outline:none;
+  transition:box-shadow .12s, border-color .12s;
+}
+
+.add-row input:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 4px rgba(37,99,235,0.08);
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:8px;
+  background:var(--primary);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.btn.ghost{
+  background:transparent;
+  color:var(--primary);
+  border:1px solid rgba(37,99,235,0.12);
+}
+
+.todo-list{
+  margin-top:16px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.todo-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px;
+  border-radius:8px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.01), rgba(0,0,0,0.01));
+  border:1px solid #eef2f6;
+}
+
+.todo-item .left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex:1;
+}
+
+.todo-item .title{
+  font-size:16px;
+  margin:0;
+}
+
+.todo-item .meta{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.todo-item.completed .title{
+  text-decoration:line-through;
+  color:var(--muted);
+}
+
+.actions{
+  display:flex;
+  gap:8px;
+}
+
+.pill{
+  padding:6px 10px;
+  border-radius:999px;
+  background:#f3f4f6;
+  color:var(--muted);
+  font-weight:600;
+  font-size:13px;
+}
+
+.small{
+  font-size:13px;
+}
+
+/* utility rows from original */
+.kg-row{margin:10px 5px}
+.kg-button{min-width:80px}
+
+/* Specific overrides for AddTodo component (uses Bootstrap grid) */
+.container.text-center .kg-row{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.container.text-center .kg-row > [class*="col-"]{
+  padding:0 6px;
+}
+.container.text-center .kg-row .col-6 input,
+.container.text-center .kg-row .col-4 input,
+.container.text-center .kg-row input[type="text"],
+.container.text-center .kg-row input[type="date"]{
+  width:100%;
+  padding:9px 10px;
+  border:1px solid #e6e9ef;
+  border-radius:8px;
+  font-size:14px;
+}
+.container.text-center .kg-row .kg-button{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  padding:9px 12px;
+}
+
+@media (max-width:560px){
+  .container.text-center .kg-row{flex-direction:column; align-items:stretch}
+  .container.text-center .kg-row > [class*="col-"]{width:100%; padding:0}
+  .container.text-center .kg-row .kg-button{width:100%}
+}
+
+/* responsive */
+@media (max-width:560px){
+  .app-container{padding:12px}
+  .app-title{font-size:22px}
+  .add-row{flex-direction:column; align-items:stretch}
+  .btn{width:100%}
+}
+
+/* accessibility focus */
+button:focus, input:focus{
+  outline:2px solid transparent;
+  box-shadow:0 0 0 4px rgba(37,99,235,0.12);
+}
+
+/* subtle interactions */
+.btn:hover{transform:translateY(-1px); transition:transform .12s}
+.todo-item:hover{transform:translateY(-2px); transition:transform .12s}
+
+/* --- Utility CSS for App.jsx (Tailwind-like classes) --- */
+:root{
+  --green-50: #ecfdf5;
+  --blue-50: #e0f2fe;
+  --purple-50: #f3e8ff;
+  --gray-200: #e5e7eb;
+  --gray-600: #4b5563;
+  --gray-800: #1f2937;
+  --green-500: #16a34a;
+  --green-600: #047857;
+}
+
+/* Layout & spacing */
+.min-h-screen{min-height:100vh}
+.p-4{padding:1rem}
+.p-8{padding:2rem}
+.max-w-7xl{max-width:80rem}
+.mx-auto{margin-left:auto;margin-right:auto}
+.text-center{text-align:center}
+.mb-8{margin-bottom:2rem}
+.mb-4{margin-bottom:1rem}
+.mt-4{margin-top:1rem}
+.w-64{width:16rem}
+.h-2{height:0.5rem}
+.h-full{height:100%}
+.mr-3{margin-right:0.75rem}
+
+/* Flex/grid helpers */
+.flex{display:flex}
+.flex-col{flex-direction:column}
+.items-center{align-items:center}
+.items-start{align-items:flex-start}
+.justify-center{justify-content:center}
+.grid{display:grid}
+.grid-cols-2{grid-template-columns:repeat(2,1fr)}
+.gap-3{gap:0.75rem}
+.gap-4{gap:1rem}
+
+/* Typography */
+.text-4xl{font-size:2.25rem;line-height:1.1}
+.text-3xl{font-size:1.875rem}
+.text-2xl{font-size:1.5rem}
+
+/* --- Styled controls for rating/experience/urgency + Calculate button --- */
+.space-y-6 > div label{display:flex;align-items:center;gap:.5rem;color:var(--gray-800);font-weight:600}
+
+/* Range sliders: modern, colorful tracks and rounded thumbs */
+input[type="range"]{ -webkit-appearance:none; appearance:none; width:100%; height:12px; border-radius:999px; background:linear-gradient(90deg,#e6e9ef,#e6e9ef); }
+input[type="range"]::-webkit-slider-runnable-track{ height:12px; border-radius:999px; background:linear-gradient(90deg,#f1f5f9,#e6e9ef); }
+input[type="range"]::-webkit-slider-thumb{ -webkit-appearance:none; appearance:none; width:24px; height:24px; margin-top:-6px; border-radius:50%; background:linear-gradient(180deg,#fff,#f8fafc); border:3px solid rgba(0,0,0,0.08); box-shadow:0 6px 14px rgba(2,6,23,0.14); }
+input[type="range"]:focus{ outline:none; }
+/* Firefox */
+input[type="range"]::-moz-range-track{ height:12px; border-radius:999px; background:linear-gradient(90deg,#f1f5f9,#e6e9ef); }
+input[type="range"]::-moz-range-thumb{ width:24px; height:24px; border-radius:50%; background:linear-gradient(180deg,#fff,#f8fafc); border:3px solid rgba(0,0,0,0.08); box-shadow:0 6px 14px rgba(2,6,23,0.14); }
+/* accent colors for specific sliders (use class selectors) */
+input.accent-yellow-500::-webkit-slider-thumb, input.accent-yellow-500::-moz-range-thumb{ border-color:#f59e0b }
+input.accent-blue-500::-webkit-slider-thumb, input.accent-blue-500::-moz-range-thumb{ border-color:#3b82f6 }
+
+/* utility: ensure elements with w-full get full width */
+.w-full{width:100%}
+
+/* helper row under sliders */
+.space-y-6 .flex.justify-between{display:flex;justify-content:space-between;align-items:center}
+.space-y-6 .flex.justify-between span{font-size:12px;color:var(--gray-600)}
+.space-y-6 .flex.justify-between .text-gray-400{color:#9ca3af}
+
+/* Urgency select - stronger visual */
+.space-y-6 select{background:linear-gradient(180deg,#fff,#fbfdff); border:1px solid #e6e9ef; padding:12px; font-size:14px}
+.space-y-6 select:focus{box-shadow:0 6px 20px rgba(37,99,235,0.08); border-color:var(--primary)}
+
+/* Calculate button - stronger glassy gradient with lift */
+.bg-gradient-to-r.from-green-500.to-blue-600{background:linear-gradient(90deg,#10b981 0%,#2563eb 100%)}
+.bg-gradient-to-r.from-green-500.to-blue-600:hover{background:linear-gradient(90deg,#059669 0%,#1e40af 100%)}
+.bg-gradient-to-r.from-green-500.to-blue-600{box-shadow:0 12px 30px rgba(16,163,127,0.12); transition:transform .18s, box-shadow .18s}
+.bg-gradient-to-r.from-green-500.to-blue-600:active{transform:translateY(1px) scale(.997)}
+
+/* Prediction card adopt a subtle glass surface */
+.mt-8.p-6.bg-gradient-to-r.from-green-500.to-blue-600{background:linear-gradient(90deg,#059669 0%,#1e40af 100%)}
+.mt-8.p-6.bg-gradient-to-r.from-green-500.to-blue-600 .text-5xl{font-size:3rem}
+
+/* --- Additional polished UI styles --- */
+/* button / chip utilities used in workType grid */
+.p-3{padding:.75rem}
+.rounded-lg{border-radius:.75rem}
+.border-2{border-width:2px}
+.text-sm{font-size:.875rem}
+.font-medium{font-weight:600}
+.transition{transition:all .16s cubic-bezier(.2,.9,.2,1)}
+.border-gray-200{border-color:#e6e9ef}
+.text-gray-700{color:#374151}
+.bg-green-50{background:var(--green-50)}
+.border-green-500{border-color:var(--green-500)}
+.text-green-700{color:#047857}
+.hover\:border-green-300{ }
+
+/* attribute selector hover handlers for classes that include 'hover:' tokens */
+[class*="hover:border-green-300"]:hover{border-color:#86efac}
+[class*="hover:from-green-600"]:hover{filter:brightness(.96)}
+[class*="hover:to-blue-700"]:hover{filter:brightness(.96)}
+
+/* work type chips appearance */
+button.p-3.rounded-lg.border-2{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:white}
+button.p-3.rounded-lg.border-2[aria-pressed="true"], button[class*="border-green-500"][class*="bg-green-50"]{background:var(--green-50); border-color:var(--green-500); color:var(--green-700)}
+button.p-3.rounded-lg.border-2:hover{transform:translateY(-4px); box-shadow:0 10px 25px rgba(2,6,23,0.06)}
+
+/* cards: elevate and smooth */
+.bg-white.rounded-xl.shadow-2xl{border-radius:1rem; box-shadow:0 30px 60px rgba(2,6,23,0.12)}
+.bg-white.rounded-xl.shadow-lg{transition:transform .18s, box-shadow .18s}
+.bg-white.rounded-xl.shadow-lg:hover{transform:translateY(-6px); box-shadow:0 28px 60px rgba(2,6,23,0.14)}
+
+/* headings */
+h1, .app-title{letter-spacing:-0.02em}
+
+/* small, subtle divider */
+.divider{height:1px;background:#eef2f6;margin:12px 0;border-radius:2px}
+
+/* responsive tweaks */
+@media (max-width:920px){
+  .max-w-7xl{max-width:48rem}
+  .bg-white.rounded-xl.shadow-2xl .p-6{padding:1rem}
+}
+
+/* micro-animations for predictive card */
+.mt-8.p-6.bg-gradient-to-r.from-green-500.to-blue-600{transition:transform .22s, box-shadow .22s}
+.mt-8.p-6.bg-gradient-to-r.from-green-500.to-blue-600:hover{transform:translateY(-6px); box-shadow:0 35px 80px rgba(16,163,127,0.12)}
+
+/* adjust chart containers for responsiveness */
+.bg-white.rounded-xl .recharts-wrapper{max-width:100%;height:auto}
+
+
+.text-lg{font-size:1.125rem}
+.text-sm{font-size:0.875rem}
+.text-xs{font-size:0.75rem}
+.font-bold{font-weight:700}
+.text-gray-600{color:var(--gray-600)}
+.text-gray-500{color:#6b7280}
+.text-gray-800{color:var(--gray-800)}
+.text-green-600{color:var(--green-600)}
+.text-green-700{color:#047857}
+
+/* Card / visual */
+.bg-white{background:#fff}
+.rounded-xl{border-radius:1rem}
+.shadow-lg{box-shadow:0 10px 30px rgba(2,6,23,0.08)}
+.p-6{padding:1.5rem}
+.border-l-4{border-left-width:4px}
+.border-green-500{border-left-color:var(--green-500)}
+.border-blue-500{border-left-color:#2563eb}
+.border-orange-500{border-left-color:#f97316}
+
+/* Progress / basic utilities */
+.bg-gray-200{background:var(--gray-200)}
+.rounded-full{border-radius:9999px}
+.overflow-hidden{overflow:hidden}
+.bg-green-500{background:var(--green-500)}
+.animate-pulse{animation:kg-pulse 1.6s ease-in-out infinite}
+@keyframes kg-pulse{0%{opacity:1}50%{opacity:.6}100%{opacity:1}}
+
+/* Gradient helpers (simple approximation) */
+.bg-gradient-to-br{background:linear-gradient(135deg,var(--bg-from,#ecfdf5),var(--bg-via,#e0f2fe),var(--bg-to,#f3e8ff))}
+.from-green-50{--bg-from:var(--green-50)}
+.via-blue-50{--bg-via:var(--blue-50)}
+.to-purple-50{--bg-to:var(--purple-50)}
+
+/* responsive approximations: apply when class attribute contains md: prefixed tokens */
+@media (min-width:768px){
+  [class*="md:p-8"]{padding:2rem}
+  [class*="md:grid-cols-4"]{grid-template-columns:repeat(4,1fr)}
+  [class*="md:text-5xl"]{font-size:3rem}
+}
+
+/* Buttons / small utilities used in App.jsx */
+.rounded-2xl{border-radius:1.25rem}
+.shadow-2xl{box-shadow:0 25px 50px rgba(2,6,23,0.12)}
+.p-8{padding:2rem}
+.space-y-6 > * + *{margin-top:1.5rem}
+.grid-cols-1{grid-template-columns:repeat(1,1fr)}
+.gap-8{gap:2rem}
+.text-yellow-500{color:#f59e0b}
+.inline{display:inline}
+.w-6{width:1.5rem}
+.h-6{height:1.5rem}
+.mr-2{margin-right:0.5rem}
+
+/* small helper for bordered metrics */
+
+/* Metrics: large cards with colored left accent and big numbers */
+.metrics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1.25rem}
+.metric-card{min-height:120px;padding:1.25rem;border-radius:14px;display:flex;flex-direction:column;justify-content:center;background:#fff}
+.metric-card .label{font-size:0.95rem;color:var(--gray-600);margin-bottom:.5rem}
+.metric-card .number{font-size:2.25rem;font-weight:800;line-height:1}
+.metric-card.green{border-left:8px solid var(--green-500)}
+.metric-card.blue{border-left:8px solid #2563eb}
+.metric-card.purple{border-left:8px solid #8b5cf6}
+.metric-card.orange{border-left:8px solid #f97316}
+
+/* Work type buttons (two-column full-width grid) */
+.grid.grid-cols-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+button.p-3.rounded-lg.border-2{display:block;align-items:center;justify-content:flex-start;gap:.75rem;background:white;width:100%;padding:14px 18px;border-radius:12px;border-color:#e8eef6;text-align:left;font-size:0.95rem}
+button.p-3.rounded-lg.border-2 .emoji{margin-right:8px}
+button.p-3.rounded-lg.border-2[aria-pressed="true"], button[class*="border-green-500"][class*="bg-green-50"]{background:linear-gradient(90deg, rgba(16,185,129,0.06), rgba(16,185,129,0.02)); border-color:var(--green-500); color:var(--green-700); box-shadow:0 10px 30px rgba(16,185,129,0.06)}
+/* Work-type helper class selectors */
+.work-type{display:block}
+.work-type.selected{background:linear-gradient(90deg, rgba(16,185,129,0.06), rgba(16,185,129,0.02)); border-color:var(--green-500); color:var(--green-700); box-shadow:0 10px 30px rgba(16,185,129,0.06)}
+.work-type:hover{transform:translateY(-3px); box-shadow:0 12px 30px rgba(2,6,23,0.06)}
+button.p-3.rounded-lg.border-2:hover{transform:translateY(-3px); box-shadow:0 12px 30px rgba(2,6,23,0.06)}
+
+/* Bigger, more visible sliders (override earlier rules) */
+input[type="range"]{width:100%!important;height:16px;border-radius:999px;background:#eef2f6}
+input[type="range"]::-webkit-slider-runnable-track{height:16px;border-radius:999px;background:#eef2f6}
+input[type="range"]::-webkit-slider-thumb{width:32px;height:32px;margin-top:-8px;border-radius:50%;background:#fff;border:6px solid rgba(255,255,255,0.92);box-shadow:0 10px 24px rgba(20,25,40,0.18);}
+input[type="range"]::-moz-range-track{height:16px;border-radius:999px;background:#eef2f6}
+input[type="range"]::-moz-range-thumb{width:32px;height:32px;border-radius:50%;background:#fff;border:6px solid rgba(255,255,255,0.92);box-shadow:0 10px 24px rgba(20,25,40,0.18);}
+input.accent-yellow-500::-webkit-slider-thumb, input.accent-yellow-500::-moz-range-thumb{border-color:#f59e0b;background:linear-gradient(180deg,#ffd54d,#fff)}
+input.accent-blue-500::-webkit-slider-thumb, input.accent-blue-500::-moz-range-thumb{border-color:#3b82f6;background:linear-gradient(180deg,#93c5fd,#fff)}
+
+/* Helper labels under sliders */
+.space-y-6 .flex.justify-between span:first-child{color:#374151}
+.space-y-6 .flex.justify-between span:last-child{color:#f59e0b;font-weight:700}
+
+/* Calculate button stronger lift */
+.bg-gradient-to-r.from-green-500.to-blue-600{border-radius:12px}
+
+/* Prediction card number size */
+.mt-8.p-6.bg-gradient-to-r.from-green-500.to-blue-600 .text-5xl{font-size:3.4rem}
+
+/* Prediction gap control: smaller gap below calculate button, larger on wider screens */
+.prediction-gap{margin-top:12px}
+@media (min-width:768px){
+  .prediction-gap{margin-top:28px}
+}
+
+/* Prediction text styling: make informational messages blue */
+.prediction-meta{color:#0f172a; font-weight:600}
+.prediction-note{color:#0f172a; background:rgba(255,255,255,0.92); border:1px solid rgba(15,23,42,0.06)}
+
+/* Slight typography adjustments */
+.text-3xl{font-size:2rem}
+.text-2xl{font-size:1.5rem}
