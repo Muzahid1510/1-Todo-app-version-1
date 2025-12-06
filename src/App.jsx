@@ -432,21 +432,21 @@ const App = () => {
         {/* Model Performance Metrics */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-green-500">
-            <div className="text-sm text-gray-600 mb-1">R² Score</div>
+            <div className="text-sm text-gray-600 mb-1">R²(R-Squared) score- Overall Accuracy</div>
             <div className="text-3xl font-bold text-green-600">
               {metrics.r2Score.toFixed(4)}
             </div>
             <div className="text-xs text-gray-500 mt-1">Accuracy</div>
           </div>
           <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-500">
-            <div className="text-sm text-gray-600 mb-1">MAE</div>
+            <div className="text-sm text-gray-600 mb-1">MAE(Mean Absolute Error)</div>
             <div className="text-3xl font-bold text-blue-600">
               ₹{metrics.mae.toFixed(2)}
             </div>
             <div className="text-xs text-gray-500 mt-1">Avg Error</div>
           </div>
           <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-orange-500">
-            <div className="text-sm text-gray-600 mb-1">MAPE</div>
+            <div className="text-sm text-gray-600 mb-1">MAPE(Mean Absolute Percentage Error)</div>
             <div className="text-3xl font-bold text-orange-600">
               {metrics.mape.toFixed(2)}%
             </div>
